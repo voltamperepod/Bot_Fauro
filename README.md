@@ -28,9 +28,11 @@ O Arquivo config.py não esta incluido neste projeto pelo motivo de conter infor
 "
 
 #NOME DA URL DO FEED DO PODCAST PARA QUE SEJA PUXADO O ULTIMO PROGRAMA 
+
 url_feed = '   '
 
 #TOKEN UTILIZADO PELO BOT DO TELEGRAM PARA QUE POSSA VALIDAR QUE O BOT É UNICO
+
 token_bot = '   '
 
 "
