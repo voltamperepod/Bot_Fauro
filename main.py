@@ -96,7 +96,7 @@ def handle(msg):
 
       # comando /sai
       elif MensagemGrupo == '/oi':
-         bot.sendMessage(chatid, mensagem.saidaqui)
+         bot.sendMessage(chatid, mensagem.saudacao)
 	  
 # roda o bot como thread em segundo plano
 MessageLoop(bot, handle).run_as_thread()

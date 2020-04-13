@@ -11,4 +11,4 @@ expulso = u' foi expulso por não ter respondido a tempo.'
 
 boo = u'PQP, que susto, cara!'
 
-oi = u'Oi!'
+saudacao = u'Oiii, Diliçaaaa'
