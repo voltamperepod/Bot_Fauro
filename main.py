@@ -16,6 +16,7 @@
 # [T] CAPTCHA SIMPLES PARA TESTAR SE NOVO MEMBRO É SPAMMER
 # [T] TIMEOUT PARA EXPULSÃO CASO NÃO RESPONDA O CAPTCHA
 # [T] VERIFICAR SAÍDA DE MEMBROS
+# [T] VERIFICAR FEED DO PODCAST
 # [P] INTERPRETADOR DE LINGUAGEM NATURAL
 
 # OBS.: FUNÇÃO DE MONTAGEM DE VITRINE PARA O EPISÓDIO TRANSFERIDA PARA OUTRO BOT
@@ -97,7 +98,19 @@ def handle(msg):
       # comando /sai
       elif MensagemGrupo == '/oi':
          bot.sendMessage(chatid, mensagem.saudacao)
-	  
+
+      # comando para mostrar último episódio do feed do podcast
+      elif MensagemGrupo == '/ultimo':
+         feed = feedparser.parse(config.url_feed)
+         # imprime o status do feed (códigos http, exemplo, 404 é feed não encontrado. 200 é ok e 301 é redirecionado)
+         print feed.status
+         if feed.status == 200 or feed.status == 301:
+            print feed.entries[0].links[1].href
+            keyboard = InlineKeyboardMarkup(inline_keyboard=[
+               [InlineKeyboardButton(text = u'Ouvir', url = feed.entries[0].links[1].href, callback_data='url')],
+            ])
+            bot.sendMessage(chatid, feed.entries[0].title, reply_markup=keyboard)
+
 # roda o bot como thread em segundo plano
 MessageLoop(bot, handle).run_as_thread()
 
