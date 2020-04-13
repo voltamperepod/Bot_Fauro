@@ -25,7 +25,7 @@ Criado por Roger Manrique
 
 O Arquivo config.py não esta incluido neste projeto pelo motivo de conter informações sensiveis destinadas ao controle do mesmo. Mas deve ser criado um arquivo contendo as seguintes informações
 
-<code>
+<code>"
 
 #NOME DA URL DO FEED DO PODCAST PARA QUE SEJA PUXADO O ULTIMO PROGRAMA 
 
@@ -35,4 +35,5 @@ url_feed = '   '
 
 token_bot = '   '
 
+"
 </code>
