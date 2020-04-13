@@ -95,7 +95,7 @@ def handle(msg):
          bot.sendMessage(chatid, mensagem.boo)
 
       # comando /sai
-      elif MensagemGrupo == '/sai':
+      elif MensagemGrupo == '/oi':
          bot.sendMessage(chatid, mensagem.saidaqui)
 	  
 # roda o bot como thread em segundo plano
