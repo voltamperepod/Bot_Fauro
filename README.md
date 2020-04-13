@@ -3,13 +3,13 @@
 Está é a pagina de introdução do bot que da as boas vindas a todos os usuarios do telegram.
 
 
-<h2>Criador</h2>
+<h3>Criador</h3>
 
 Criado por Roger Manrique
 
 
 
-<h2>Funções</h2>
+<h3>Funções</h3>
 
 <ul>
 	<li>IDENTIFICAÇÃO DE NOVO MEMBRO NO GRUPO</li>
@@ -21,3 +21,16 @@ Criado por Roger Manrique
 </ul>
 
 
+<h3>Arquivo config.py</h3>
+
+O Arquivo config.py não esta incluido neste projeto pelo motivo de conter informações sensiveis destinadas ao controle do mesmo. Mas deve ser criado um arquivo contendo as seguintes informações
+
+"
+
+#NOME DA URL DO FEED DO PODCAST PARA QUE SEJA PUXADO O ULTIMO PROGRAMA 
+url_feed = '   '
+
+#TOKEN UTILIZADO PELO BOT DO TELEGRAM PARA QUE POSSA VALIDAR QUE O BOT É UNICO
+token_bot = '   '
+
+"
