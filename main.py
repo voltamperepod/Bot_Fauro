@@ -7,7 +7,7 @@
 # AUTOR: ROGER MANRIQUE                                                        #
 # DATA: ABRIL DE 2020                                                          #
 # IDENTAÇÃO: 3 ESPAÇOS (CUIDADO QUE O NOTEPAD++ TENDE A COLOCAR TAB)           #
-# LICENÇA: GNU                                                                 #
+# LICENÇA: AGPL                                                                #
 ################################################################################
 
 # FUNÇÕES (P - PENDENTE, C - CODIFICADA, T - TESTADA)
