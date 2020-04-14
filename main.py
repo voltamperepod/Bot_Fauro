@@ -23,6 +23,8 @@
 
 import config, mensagem
 import telepot, time, feedparser, subprocess, shlex, logging
+import apiai, json
+import re
 from telepot.loop import MessageLoop
 from telepot.namedtuple import InlineQueryResultArticle, InputTextMessageContent, InlineKeyboardMarkup, InlineKeyboardButton
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
@@ -89,6 +91,18 @@ def handle(msg):
       # comando /sai
       elif MensagemGrupo == '/oi':
          bot.sendMessage(chatid, mensagem.saudacao)
+
+      #verifica se a menssagem é para o Fauro e envia a menssagem para o DialogFlow
+      elif MensagemGrupo != False and bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE)):
+         MensagemGrupoModificada = MensagemGrupo.replace('@fauroia_bot','') #remove da menssagem o nome do Bot
+         request = apiai.ApiAI(config.token_dialogflow).text_request() # Conecta ao Dialogflow através da API Token
+         request.lang = 'pt-BR' # Seta a lingua a ser utilizada no dialogflow
+         request.session_id = 'Small-Talk' # ID Sessão de Dialogo (para terinamento do bot)
+         request.query = MensagemGrupoModificada# Envia a menssagem para o dialogflow 
+         responseJson = json.loads(request.getresponse().read().decode('utf-8'))
+         response = responseJson['result']['fulfillment']['speech'] # pega a resposta do JSON
+         if response:
+            bot.sendMessage(chatid, text=response) #Resposta a ser enviada para o BOT
 
       # comando para mostrar último episódio do feed do podcast
       elif MensagemGrupo == '/ultimo':

@@ -5,7 +5,7 @@ Está é a pagina de introdução do bot que da as boas vindas a todos os usuari
 
 <h3>Criador</h3>
 
-Criado por Roger Manrique
+Criado por Roger Manrique e Adrian Lemos
 
 
 
