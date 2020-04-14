@@ -31,6 +31,12 @@ from telepot.loop import OrderedWebhook
 # inicializa token do bot
 bot = telepot.Bot(config.token_bot)
 
+# avisa o adrian que o bot foi iniciado no servidor
+bot.sendMessage(config.id_adrian, mensagem.bot_boot)
+
+# avisa o roger que o bot foi iniciado no servidor
+bot.sendMessage(config.id_roger, mensagem.bot_boot)
+
 # inicializa variável de novo membro para captcha
 DadosNovoMembro = {'chatid':0, 'memberid':0}
 
