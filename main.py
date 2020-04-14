@@ -34,9 +34,6 @@ bot = telepot.Bot(config.token_bot)
 # inicializa variável de novo membro para captcha
 DadosNovoMembro = {'chatid':0, 'memberid':0}
 
-#flag membro expulso
-MembroExpulso = 0
-
 def handle(msg):
    # imprime a mensagem
    print "%s\n" % msg
@@ -69,14 +66,8 @@ def handle(msg):
       except:
          NomeMembroSaindo = u'Sem Nome'
 		 
-      # avisa grupo que membro saiu por conta própria
-      if MembroExpulso == 0:
-         bot.sendMessage(chatid, NomeMembroSaindo + mensagem.tchau)
-         
-      # avisa que membro foi expulso pelo bot
-      else:
-         bot.sendMessage(chatid, NomeMembroSaindo + mensagem.expulso)
-         MembroExpulso = 0
+      # avisa grupo que membro saiu
+      bot.sendMessage(chatid, NomeMembroSaindo + mensagem.tchau)
 		 
    ###########################################
    # A PARTIR DESSE PONTO ELE DETECTA TEXTOS #
@@ -125,4 +116,3 @@ while 1:
          bot.kickChatMember(DadosNovoMembro['chatid'], DadosNovoMembro['memberid'])
          DadosNovoMembro['memberid'] = 0
          DadosNovoMembro['chatid'] = 0
-         MembroExpulso = 1
