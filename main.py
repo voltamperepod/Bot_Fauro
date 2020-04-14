@@ -31,12 +31,6 @@ from telepot.loop import OrderedWebhook
 # inicializa token do bot
 bot = telepot.Bot(config.token_bot)
 
-# avisa o adrian que o bot foi iniciado no servidor
-bot.sendMessage(config.id_adrian, mensagem.bot_boot)
-
-# avisa o roger que o bot foi iniciado no servidor
-bot.sendMessage(config.id_roger, mensagem.bot_boot)
-
 # inicializa variável de novo membro para captcha
 DadosNovoMembro = {'chatid':0, 'memberid':0}
 
@@ -110,6 +104,13 @@ def handle(msg):
 
 # roda o bot como thread em segundo plano
 MessageLoop(bot, handle).run_as_thread()
+
+# avisa o adrian que o bot foi iniciado no servidor
+# só funciona se tu já tiveres dado /start no bot em pvt
+#bot.sendMessage(config.id_adrian, u'Bot reiniciado')
+
+# avisa o roger que o bot foi iniciado no servidor
+bot.sendMessage(config.id_roger, mensagem.bot_boot)
 
 # loop infinito somente para o arquivo .py não parar aqui
 while 1:
