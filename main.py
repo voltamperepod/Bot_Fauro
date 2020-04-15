@@ -4,7 +4,7 @@
 ################################################################################
 # VERSÃO 2.0 DO BOT DE BOAS VINDAS DO GRUPO DO PODCAST VOLT AMPERE NO TELEGRAM #
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+#
-# AUTOR: ROGER MANRIQUE                                                        #
+# AUTORES: ROGER MANRIQUE E ADRIAN LEMOS                                       #
 # DATA: ABRIL DE 2020                                                          #
 # IDENTAÇÃO: 3 ESPAÇOS (CUIDADO QUE O NOTEPAD++ TENDE A COLOCAR TAB)           #
 # LICENÇA: AGPL                                                                #
@@ -42,6 +42,16 @@ def handle(msg):
    
    # pega os dados básicos da mensagem 
    content_type, chat_type, chatid = telepot.glance(msg)
+   print 'content_type: %s\n' % content_type
+   print 'chat_type: %s\n' % chat_type
+   try:
+      msg['reply_to_message']
+      IsReply = 1
+      ReplyPara = msg['reply_to_message']['from']['username']
+   except:
+      IsReply = 0
+
+   print 'IsReply = %d' % IsReply
    
    # caso seja alguém entrando no grupo, envia mensagem de boas vindas
    if content_type == 'new_chat_member':
@@ -79,7 +89,7 @@ def handle(msg):
       MensagemGrupo = msg['text'].lower()
       
 	  # se a flag de novo membro estiver ativa e esse cara respondeu corretamente, zera o timeout para kick
-      if (MensagemGrupo.find("4") >= 0 or MensagemGrupo.find("quatro") >= 0) and msg['from']['id'] == DadosNovoMembro['memberid']:
+      if (MensagemGrupo.find('4') >= 0 or MensagemGrupo.find('quatro') >= 0) and msg['from']['id'] == DadosNovoMembro['memberid']:
          DadosNovoMembro['memberid'] = 0
          DadosNovoMembro['chatid'] = 0
          bot.sendMessage(chatid, u'Agora sim. ' + mensagem.boasvindas)
@@ -93,7 +103,8 @@ def handle(msg):
          bot.sendMessage(chatid, mensagem.saudacao)
 
       #verifica se a menssagem é para o Fauro e envia a menssagem para o DialogFlow
-      elif MensagemGrupo != False and bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE)):
+      #elif MensagemGrupo != False and bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE)):
+      elif ((IsReply and ReplyPara == u'FauroIA_bot') or bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE))):
          MensagemGrupoModificada = MensagemGrupo.replace('@fauroia_bot','') #remove da menssagem o nome do Bot
          request = apiai.ApiAI(config.token_dialogflow).text_request() # Conecta ao Dialogflow através da API Token
          request.lang = 'pt-BR' # Seta a lingua a ser utilizada no dialogflow
