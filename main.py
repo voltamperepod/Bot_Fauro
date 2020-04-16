@@ -96,8 +96,8 @@ def handle(msg):
       
       #verifica se a menssagem é para o Fauro e envia a menssagem para o DialogFlow
       #elif MensagemGrupo != False and bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE)):
-      elif ((IsReply and ReplyPara == u'FauroIA_bot') or bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE))):
-         MensagemGrupoModificada = MensagemGrupo.replace('@fauroia_bot','') #remove da menssagem o nome do Bot
+      elif ((IsReply and ReplyPara == u'faurorex_bot') or bool(re.search('\\@faurorex_bot\\b', MensagemGrupo, re.IGNORECASE))):
+         MensagemGrupoModificada = MensagemGrupo.replace('@faurorex_bot','') #remove da menssagem o nome do Bot
          request = apiai.ApiAI(config.token_dialogflow).text_request() # Conecta ao Dialogflow através da API Token
          request.lang = 'pt-BR' # Seta a lingua a ser utilizada no dialogflow
          request.session_id = 'Small-Talk' # ID Sessão de Dialogo (para terinamento do bot)
