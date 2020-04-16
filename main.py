@@ -130,6 +130,13 @@ def handle(msg):
 # roda o bot como thread em segundo plano
 MessageLoop(bot, handle).run_as_thread()
 
+# avisa o adrian que o bot foi iniciado no servidor
+# só funciona se tu já tiveres dado /start no bot em pvt
+#bot.sendMessage(config.id_adrian, u'Bot reiniciado')
+
+# avisa o roger que o bot foi iniciado no servidor
+bot.sendMessage(config.id_roger, mensagem.bot_boot)
+
 # loop infinito somente para o arquivo .py não parar aqui
 while 1:
    
