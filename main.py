@@ -94,14 +94,6 @@ def handle(msg):
          DadosNovoMembro['chatid'] = 0
          bot.sendMessage(chatid, u'Agora sim. ' + mensagem.boasvindas)
       
-      # comando /boo
-      elif MensagemGrupo == '/boo':
-         bot.sendMessage(chatid, mensagem.boo)
-
-      # comando /sai
-      elif MensagemGrupo == '/oi':
-         bot.sendMessage(chatid, mensagem.saudacao)
-
       #verifica se a menssagem é para o Fauro e envia a menssagem para o DialogFlow
       #elif MensagemGrupo != False and bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE)):
       elif ((IsReply and ReplyPara == u'FauroIA_bot') or bool(re.search('\\@FauroIA_bot\\b', MensagemGrupo, re.IGNORECASE))):
