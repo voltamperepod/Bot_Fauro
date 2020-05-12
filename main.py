@@ -135,6 +135,8 @@ while 1:
    # se existe um novo membro, espera 30s para kickar caso ele não responda o captcha corretamente
    if (DadosNovoMembro['memberid'] > 1):
       print 'contagem regressiva para kick'
+         bot.sendMessage(memberid, u'Vofe não é Humano, enfão Xau ')
+
       time.sleep(30)
       if (DadosNovoMembro['memberid'] > 0):
          bot.kickChatMember(DadosNovoMembro['chatid'], DadosNovoMembro['memberid'])
